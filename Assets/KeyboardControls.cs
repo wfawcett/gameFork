@@ -7,8 +7,8 @@ public class KeyboardControls : MonoBehaviour
 
     public Rigidbody2D Ted;
     
-    public float walkSpeed = 5;
-    public float runSpeed = 10;
+    public float walkSpeed = 1;
+    public float runSpeed = 5;
     // Start is called before the first frame update
     void Start()
     {
@@ -33,7 +33,7 @@ public class KeyboardControls : MonoBehaviour
         //need to check that Ted is on the ground...
         if (Input.GetKey("space") && Ted.velocity.y == 0)
         {
-            Ted.AddForce(new Vector2(0, 50), ForceMode2D.Impulse);
+            Ted.AddForce(new Vector2(0, 75), ForceMode2D.Impulse);
         }
         
 
