@@ -33,7 +33,7 @@ public class KeyboardControls : MonoBehaviour
         //need to check that Ted is on the ground...
         if (Input.GetKey("space") && Ted.velocity.y == 0)
         {
-            Ted.AddForce(new Vector2(0, 75), ForceMode2D.Impulse);
+            Ted.AddForce(new Vector2(0, 10), ForceMode2D.Impulse);
         }
         
 
