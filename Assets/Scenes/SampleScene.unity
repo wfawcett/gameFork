@@ -403,7 +403,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   controller: {fileID: 1006019939}
-  runSpeed: 80
+  runSpeed: 40
 --- !u!114 &1006019939
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -422,7 +422,7 @@ MonoBehaviour:
   m_AirControl: 1
   m_WhatIsGround:
     serializedVersion: 2
-    m_Bits: 55
+    m_Bits: 53
   m_GroundCheck: {fileID: 1499649651}
   m_CeilingCheck: {fileID: 70889207}
   m_CrouchDisableCollider: {fileID: 0}
@@ -2461,7 +2461,7 @@ GameObject:
   - component: {fileID: 2019526545}
   - component: {fileID: 2019526546}
   - component: {fileID: 2019526547}
-  m_Layer: 0
+  m_Layer: 1
   m_Name: background
   m_TagString: Untagged
   m_Icon: {fileID: 0}
