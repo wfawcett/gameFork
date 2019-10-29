@@ -12,10 +12,18 @@ public class PlayerMovement : MonoBehaviour
 
     bool jump = false;
 
-    
+    //public Rigidbody2D Ted;
+    Rigidbody2D Ted;
+
 
     // Start is called before the first frame update
-    
+
+    void Awake()
+    {
+        Ted = FindObjectOfType<Rigidbody2D>();
+    }
+
+
     // Update is called once per frame
     void Update(){
         horizontalMove = Input.GetAxisRaw("Horizontal") * runSpeed;
@@ -28,5 +36,10 @@ public class PlayerMovement : MonoBehaviour
     void FixedUpdate() {
         controller.Move(horizontalMove * Time.fixedDeltaTime, false, jump);
         jump = false;
+
+        if (Ted.position.y < -10f)
+        {
+            print("You died!!! :(");
+        }
     }
 }
