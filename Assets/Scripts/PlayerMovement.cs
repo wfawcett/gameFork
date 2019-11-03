@@ -12,6 +12,9 @@ public class PlayerMovement : MonoBehaviour
 
     bool jump = false;
 
+    
+    Rigidbody2D Ted; 
+    
     private Animator anim;
 
 
@@ -19,6 +22,11 @@ public class PlayerMovement : MonoBehaviour
     // Start is called before the first frame update
     private void Start(){
         anim = GetComponent<Animator>();
+    }
+
+    void Awake()
+    {
+        Ted = FindObjectOfType<Rigidbody2D>();
     }
 
     // Update is called once per frame
@@ -36,5 +44,10 @@ public class PlayerMovement : MonoBehaviour
     void FixedUpdate() {        
         controller.Move(horizontalMove * Time.fixedDeltaTime, false, jump);
         jump = false;
+
+        if (Ted.position.y < -10f)
+        {
+            FindObjectOfType<GameManager>().EndGame();
+        }
     }
 }
