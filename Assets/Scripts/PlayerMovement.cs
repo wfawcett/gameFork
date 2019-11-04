@@ -8,6 +8,8 @@ public class PlayerMovement : MonoBehaviour
 
     public float runSpeed = 40f;
 
+    public float fallOffScreenHeight = -20f;
+
     float horizontalMove = 0f;
 
     bool jump = false;
@@ -45,7 +47,7 @@ public class PlayerMovement : MonoBehaviour
         controller.Move(horizontalMove * Time.fixedDeltaTime, false, jump);
         jump = false;
 
-        if (Ted.position.y < -10f)
+        if (Ted.position.y < fallOffScreenHeight)
         {
             FindObjectOfType<GameManager>().EndGame();
         }
