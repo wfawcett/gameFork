@@ -12,28 +12,36 @@ public class PlayerMovement : MonoBehaviour
 
     bool jump = false;
 
-    //public Rigidbody2D Ted;
-    Rigidbody2D Ted;
+    
+    Rigidbody2D Ted; 
+    
+    private Animator anim;
+
 
 
     // Start is called before the first frame update
+    private void Start(){
+        anim = GetComponent<Animator>();
+    }
 
     void Awake()
     {
         Ted = FindObjectOfType<Rigidbody2D>();
     }
 
-
     // Update is called once per frame
     void Update(){
+        
         horizontalMove = Input.GetAxisRaw("Horizontal") * runSpeed;
-
+        bool isMoving = horizontalMove != 0;
+        anim.SetBool("isRunning", isMoving);
         if (Input.GetButtonDown("Jump")) {
             jump = true;
+            anim.SetTrigger("jump");
         }
     }
 
-    void FixedUpdate() {
+    void FixedUpdate() {        
         controller.Move(horizontalMove * Time.fixedDeltaTime, false, jump);
         jump = false;
 
