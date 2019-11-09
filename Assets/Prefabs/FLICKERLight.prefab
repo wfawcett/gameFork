@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 9007343047232544022}
   - component: {fileID: 542651688645507771}
   - component: {fileID: 834441954260151552}
+  - component: {fileID: 1141083853757725694}
   m_Layer: 0
   m_Name: FLICKERLight
   m_TagString: Untagged
@@ -118,3 +119,17 @@ Light:
   m_UseColorTemperature: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 0
+--- !u!114 &1141083853757725694
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8536497592052459855}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1cc1f57e36e3b4c0f98cd7c22edaf8dc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxFlickerSpeed: 0.1
+  minFlickerSpeed: 1

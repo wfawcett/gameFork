@@ -1,11 +1,11 @@
+using System.Collections;
 using UnityEngine;
-using UnityEngine.Events;
-using System.Linq;
+
 
 public class LightFlicker : MonoBehaviour
 {
-    public float maxFlickerSpeed = .1f;
-	public float minFlickerSpeed = 1.0f;
+    public float maxFlickerSpeed = .02f;
+	public float minFlickerSpeed = .01f;
     
     public void Start() {
         StartCoroutine("Flicker");
@@ -14,9 +14,9 @@ public class LightFlicker : MonoBehaviour
     private IEnumerator Flicker()
     {
         while (true) {
-            FlickerLight.enabled = true;
+            GetComponent<Light>().enabled = true;
             yield return new WaitForSeconds(Random.Range(minFlickerSpeed, maxFlickerSpeed));
-            FlickerLight.enabled = false;
+            GetComponent<Light>().enabled = false;
             yield return new WaitForSeconds(Random.Range(minFlickerSpeed, maxFlickerSpeed));
        }
     }
