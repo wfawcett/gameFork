@@ -117,7 +117,7 @@ PrefabInstance:
     - target: {fileID: 8457227281901067592, guid: 26221861acc404399ab745805486005d,
         type: 3}
       propertyPath: m_Name
-      value: Flicker Spot Ligjt
+      value: Flicker Spot Light
       objectReference: {fileID: 0}
     - target: {fileID: 8457227281901067595, guid: 26221861acc404399ab745805486005d,
         type: 3}
@@ -127,7 +127,7 @@ PrefabInstance:
     - target: {fileID: 8457227281901067595, guid: 26221861acc404399ab745805486005d,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 5
+      value: 4.5
       objectReference: {fileID: 0}
     - target: {fileID: 8457227281901067595, guid: 26221861acc404399ab745805486005d,
         type: 3}
