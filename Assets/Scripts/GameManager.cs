@@ -6,16 +6,29 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
     bool gameHasEnded = false;
+    GameObject tedPlayer;
+    private Animator anim;
 
     public float restartDelay = 1f;
 
-    public void EndGame()
+    public void Start()
+    {
+        tedPlayer = GameObject.FindGameObjectsWithTag("Player")[0];
+        anim = tedPlayer.GetComponent<Animator>();
+    }
+
+    public void EndGame() {
+        this.EndGame(restartDelay);
+    }
+
+    public void EndGame(float delay)
     {
         if(gameHasEnded == false)
         {
+            anim.SetTrigger("die");
             gameHasEnded = true;
             print("Game Over");
-            Invoke("Restart", restartDelay);
+            Invoke("Restart", delay);
         }
     }
 
