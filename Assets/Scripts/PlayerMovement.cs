@@ -23,12 +23,12 @@ public class PlayerMovement : MonoBehaviour
 
     // Start is called before the first frame update
     private void Start(){
-        anim = GetComponent<Animator>();
+        anim = this.GetComponent<Animator>();
     }
 
     void Awake()
     {
-        Ted = FindObjectOfType<Rigidbody2D>();
+        Ted = this.GetComponent<Rigidbody2D>();
     }
 
     // Update is called once per frame
@@ -49,7 +49,7 @@ public class PlayerMovement : MonoBehaviour
 
         if (Ted.position.y < fallOffScreenHeight)
         {
-            FindObjectOfType<GameManager>().EndGame();
+            FindObjectOfType<GameManager>().EndGame(0f);
         }
     }
 }
