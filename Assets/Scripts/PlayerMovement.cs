@@ -14,8 +14,7 @@ public class PlayerMovement : MonoBehaviour
 
     bool jump = false;
 
-    
-    Rigidbody2D Ted; 
+    public Rigidbody2D Ted; 
     
     private Animator anim;
 
@@ -43,13 +42,18 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-    void FixedUpdate() {        
+    void FixedUpdate() {
         controller.Move(horizontalMove * Time.fixedDeltaTime, false, jump);
         jump = false;
 
+        IfTedFallsHeDies(FindObjectOfType<GameManager>());
+    }
+
+    public void IfTedFallsHeDies(GameManager gameManager)
+    {
         if (Ted.position.y < fallOffScreenHeight)
         {
-            FindObjectOfType<GameManager>().EndGame(0f);
+            gameManager.EndGame();
         }
     }
 }
