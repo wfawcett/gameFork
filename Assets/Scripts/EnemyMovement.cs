@@ -13,6 +13,7 @@ public class EnemyMovement : MonoBehaviour{
     float myWidth, myHeight; 
     bool wasFalling = true; // assume I am falling as I am put on the board above the ground most of the time. 
     private Animator anim;
+    private bool isDieing = false;
 
     // Start is called before the first frame update
     void Start()    {
@@ -48,7 +49,7 @@ public class EnemyMovement : MonoBehaviour{
         bool touchingPlayer = colliders.Length > 0;
 
         // If touching the player, end the game (we can update this later with decrement health if we want.)
-        if (touchingPlayer) {            
+        if (touchingPlayer && !isDieing) {            
             FindObjectOfType<GameManager>().EndGame();
         }
 
@@ -65,6 +66,21 @@ public class EnemyMovement : MonoBehaviour{
         myBody.velocity = myVel;
     }
 
+    /// <summary>
+    /// Sent when another object enters a trigger collider attached to this
+    /// object (2D physics only).
+    /// </summary>
+    /// <param name="other">The other Collider2D involved in this collision.</param>
+    void OnTriggerEnter2D(Collider2D other){
+       if(other.tag == "Player"){
+           isDieing = true;
+           anim.SetTrigger("die");
+           other.GetComponent<Rigidbody2D>().AddForce(new Vector2(0f, 2000f));           
+           Destroy(this.gameObject, .3f);
+        }  
+    }
+
+   
     // Update is called once per frame
     void Update()    {
         
