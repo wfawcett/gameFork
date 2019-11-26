@@ -15,9 +15,12 @@ public class GameManager : MonoBehaviour
     public static int Hearts { get; set; }
 
     public Text livesText { get; set; }
+    public Text heartsText { get; set; }
 
     public float restartDelay = 1f;
     public float invincibleTime = 2f;
+
+    private string heartCharacter;
 
     public void takeDamage(int damage)//decreaseHearts
     {
@@ -27,6 +30,7 @@ public class GameManager : MonoBehaviour
             tedIsInvincible = true;
             Hearts -= damage;
             //print("Hearts: " + Hearts);//replace with hud call
+            printHearts();
             Invoke("resetInvolnerability", invincibleTime);
         }
 
@@ -46,7 +50,7 @@ public class GameManager : MonoBehaviour
         if (!gameHasEnded)
         {
             Lives--;
-            livesText.text = "Lives: " + Lives;
+            livesText.text = "Lives: " + Lives;            
             anim.SetTrigger("die");
             gameHasEnded = true;
             Invoke("RestartLevel", restartDelay);
@@ -65,25 +69,39 @@ public class GameManager : MonoBehaviour
 
     private void ResetGame()
     {
-        print("Lives: " + Lives);
-        if (Lives <=0)
+        
+        if (Lives <= 0)
         {
             Lives = 3;
             Hearts = 3;
             SceneManager.LoadScene("Menu");
-            //print("Hearts: " + Hearts);
+           
         }
     }
 
     public void Start()
-    {        
+    {   
+        //all the text objects are in the canvas in unity
         livesText = GameObject.Find("LivesText").GetComponent<Text>();//found by the name of the object
+        heartsText = GameObject.Find("HeartsText").GetComponent<Text>();//find the hearts text
+        
+        heartCharacter = "\u2665";//thats a heart in unicode
+
+        printHearts();        
+        
         livesText.text = "Lives: " + Lives;
         tedPlayer = GameObject.FindGameObjectsWithTag("Player")[0];
         anim = tedPlayer.GetComponent<Animator>();
     }
 
-
+    private void printHearts()
+    {
+        heartsText.text = "";
+        for (int i = 0; i < Hearts; i++)
+        {            
+            heartsText.text += heartCharacter;
+        }
+    }
 
     private void RestartLevel()
     {
