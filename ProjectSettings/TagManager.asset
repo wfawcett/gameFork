@@ -6,6 +6,7 @@ TagManager:
   tags:
   - TedPlayer
   - Level1_Door
+  - LivesText
   layers:
   - Default
   - TransparentFX

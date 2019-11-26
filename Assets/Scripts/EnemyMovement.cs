@@ -49,8 +49,9 @@ public class EnemyMovement : MonoBehaviour{
         bool touchingPlayer = colliders.Length > 0;
 
         // If touching the player, end the game (we can update this later with decrement health if we want.)
-        if (touchingPlayer && !isDieing) {            
-            FindObjectOfType<GameManager>().EndGame();
+        if (touchingPlayer && !isDieing) {
+           
+            FindObjectOfType<GameManager>().takeDamage(1);
         }
 
         // if he is blocked he will aways turn, he will turn on an edge if avoidFalling is true
