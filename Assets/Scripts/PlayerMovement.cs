@@ -53,7 +53,7 @@ public class PlayerMovement : MonoBehaviour
     {
         if (Ted.position.y < fallOffScreenHeight)
         {
-            gameManager.EndGame();
+            gameManager.takeDamage(100);
         }
     }
 }
