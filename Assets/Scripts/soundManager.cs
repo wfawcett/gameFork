@@ -5,6 +5,7 @@ using UnityEngine;
 public class soundManager : MonoBehaviour
 {
     public static AudioClip jumpSound;
+    public static int jumpVolume = 1;
     static AudioSource audioSrc;
     // Start is called before the first frame update
     void Start()
@@ -23,7 +24,7 @@ public class soundManager : MonoBehaviour
         switch (clip)
         {
             case "jump":
-                audioSrc.PlayOneShot(jumpSound);
+                audioSrc.PlayOneShot(jumpSound, jumpVolume);
                 break;
         }
     }

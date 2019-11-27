@@ -17,10 +17,14 @@ public class GameManager : MonoBehaviour
     public Text livesText { get; set; }
     public Text heartsText { get; set; }
 
+    public Text coinsText { get; set; }
+
     public float restartDelay = 1f;
     public float invincibleTime = 2f;
 
     private string heartCharacter;
+
+    public static int coins = 0;
 
     public void takeDamage(int damage)//decreaseHearts
     {
@@ -38,6 +42,11 @@ public class GameManager : MonoBehaviour
         {
             LoseSingleLife();
         }
+    }
+
+    public void AddCoin(){
+        coins++;
+        coinsText.text = "Coins: " + coins;
     }
 
     public void LoseSingleLife()
@@ -84,12 +93,14 @@ public class GameManager : MonoBehaviour
         //all the text objects are in the canvas in unity
         livesText = GameObject.Find("LivesText").GetComponent<Text>();//found by the name of the object
         heartsText = GameObject.Find("HeartsText").GetComponent<Text>();//find the hearts text
+        coinsText = GameObject.Find("CoinsText").GetComponent<Text>();//find the hearts text
         
         heartCharacter = "\u2665";//thats a heart in unicode
 
         printHearts();        
         
         livesText.text = "Lives: " + Lives;
+        coinsText.text = "Coins: " + coins;
         tedPlayer = GameObject.FindGameObjectsWithTag("Player")[0];
         anim = tedPlayer.GetComponent<Animator>();
     }
