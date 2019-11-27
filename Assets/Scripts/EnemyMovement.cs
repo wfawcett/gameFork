@@ -10,8 +10,7 @@ public class EnemyMovement : MonoBehaviour{
     public bool avoidFalling = true;
     Rigidbody2D myBody;
     Transform myTransform;
-    float myWidth, myHeight; 
-    bool wasFalling = true; // assume I am falling as I am put on the board above the ground most of the time. 
+    float myWidth, myHeight;     
     private Animator anim;
     private bool isDieing = false;
 
