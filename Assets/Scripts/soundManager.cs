@@ -5,12 +5,18 @@ using UnityEngine;
 public class soundManager : MonoBehaviour
 {
     public static AudioClip jumpSound;
+    public static AudioClip coinSound;
+    public static AudioClip ouchSound;
+    public static AudioClip stompSound;
     public static int jumpVolume = 1;
     static AudioSource audioSrc;
     // Start is called before the first frame update
     void Start()
     {
         jumpSound = Resources.Load<AudioClip>("jumpSound2");
+        coinSound = Resources.Load<AudioClip>("Find_Money");
+        ouchSound = Resources.Load<AudioClip>("Hero_Hurt");
+        stompSound = Resources.Load<AudioClip>("Enemy_Damage");
         audioSrc = GetComponent<AudioSource>();
     }
 
@@ -25,6 +31,15 @@ public class soundManager : MonoBehaviour
         {
             case "jump":
                 audioSrc.PlayOneShot(jumpSound, jumpVolume);
+                break;
+            case "coin":
+                audioSrc.PlayOneShot(coinSound);
+                break;
+            case "ouch":
+                audioSrc.PlayOneShot(ouchSound);
+                break;
+            case "stomp":
+                audioSrc.PlayOneShot(stompSound);
                 break;
         }
     }
