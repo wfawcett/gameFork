@@ -8,7 +8,7 @@ public class soundManager : MonoBehaviour
     public static AudioClip coinSound;
     public static AudioClip ouchSound;
     public static AudioClip stompSound;
-    public static int jumpVolume = 1;
+    public static float jumpVolume = .25f;
     static AudioSource audioSrc;
     // Start is called before the first frame update
     void Start()
