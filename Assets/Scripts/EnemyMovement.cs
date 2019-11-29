@@ -59,6 +59,7 @@ public class EnemyMovement : MonoBehaviour{
            isDieing = true;
            anim.SetTrigger("die");
            other.GetComponent<Rigidbody2D>().AddForce(new Vector2(0f, 2000f)); 
+           other.GetComponent<Animator>().SetTrigger("jump");           
            soundManager.PlaySound("stomp");          
            Destroy(this.gameObject, .3f);
         }  
