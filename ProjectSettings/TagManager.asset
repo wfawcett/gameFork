@@ -7,6 +7,8 @@ TagManager:
   - TedPlayer
   - Level1_Door
   - LivesText
+  - Collectable
+  - CoinsText
   layers:
   - Default
   - TransparentFX
@@ -19,7 +21,7 @@ TagManager:
   - Background
   - BackgroundDetail
   - Player
-  - 
+  - Enemy
   - Platfroms
   - 
   - 

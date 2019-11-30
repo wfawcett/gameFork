@@ -35,24 +35,8 @@ public class EnemyMovement : MonoBehaviour{
         // determine if I am about to fall off an edge. 
         bool GroundInFrontOfMe = Physics2D.Linecast(lineCastPos, lineCastPos + Vector2.down *2, enemyMask);   
         
-        
-        
         Debug.DrawLine(lineCastPos, lineCastPos + Vector2.down);
-        
-        
-        
-        
-                
-        // determine if I am touching the player
-        Collider2D[] colliders = Physics2D.OverlapCircleAll(myVec2Position, 0.75f, playerMask);
-        bool touchingPlayer = colliders.Length > 0;
-
-        // If touching the player, end the game (we can update this later with decrement health if we want.)
-        if (touchingPlayer && !isDieing) {
-           
-            FindObjectOfType<GameManager>().takeDamage(1);
-        }
-
+       
         // if he is blocked he will aways turn, he will turn on an edge if avoidFalling is true
         if ((!GroundInFrontOfMe && avoidFalling ) || isBlocked)
         {
@@ -67,17 +51,31 @@ public class EnemyMovement : MonoBehaviour{
     }
 
     /// <summary>
-    /// Sent when another object enters a trigger collider attached to this
-    /// object (2D physics only).
+    /// TriggerEnter is used to determine if Ted is stomping the enemy.
     /// </summary>
     /// <param name="other">The other Collider2D involved in this collision.</param>
     void OnTriggerEnter2D(Collider2D other){
        if(other.tag == "Player"){
            isDieing = true;
            anim.SetTrigger("die");
-           other.GetComponent<Rigidbody2D>().AddForce(new Vector2(0f, 2000f));           
+           other.GetComponent<Rigidbody2D>().AddForce(new Vector2(0f, 2000f)); 
+           other.GetComponent<Animator>().SetTrigger("jump");           
+           soundManager.PlaySound("stomp");          
            Destroy(this.gameObject, .3f);
         }  
+    }
+
+    /// <summary>
+    /// CollisionEnter is used to determine if the Enemy is Hurting Ted
+    /// </summary>
+    /// <param name="other">The Collision2D data associated with this collision.</param>
+    void OnCollisionEnter2D(Collision2D other)
+    {
+        if(isDieing==false && other.gameObject.tag == "Player"){
+            FindObjectOfType<GameManager>().takeDamage(1);
+            soundManager.PlaySound("ouch");
+            other.gameObject.GetComponent<Animator>().SetTrigger("ouch");                        
+        }
     }
 
    
