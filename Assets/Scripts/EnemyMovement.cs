@@ -55,14 +55,17 @@ public class EnemyMovement : MonoBehaviour{
     /// </summary>
     /// <param name="other">The other Collider2D involved in this collision.</param>
     void OnTriggerEnter2D(Collider2D other){
-       if(other.tag == "Player"){
-           isDieing = true;
-           anim.SetTrigger("die");
-           other.GetComponent<Rigidbody2D>().AddForce(new Vector2(0f, 2000f)); 
-           other.GetComponent<Animator>().SetTrigger("jump");           
-           soundManager.PlaySound("stomp");          
-           Destroy(this.gameObject, .3f);
-        }  
+       if(this.tag != "ShadowTed")
+       { 
+           if(other.tag == "Player"){
+               isDieing = true;
+               anim.SetTrigger("die");
+               other.GetComponent<Rigidbody2D>().AddForce(new Vector2(0f, 2000f)); 
+               other.GetComponent<Animator>().SetTrigger("jump");           
+               soundManager.PlaySound("stomp");          
+               Destroy(this.gameObject, .3f);
+            }
+        }
     }
 
     /// <summary>
@@ -71,10 +74,14 @@ public class EnemyMovement : MonoBehaviour{
     /// <param name="other">The Collision2D data associated with this collision.</param>
     void OnCollisionEnter2D(Collision2D other)
     {
-        if(isDieing==false && other.gameObject.tag == "Player"){
-            FindObjectOfType<GameManager>().takeDamage(1);
-            soundManager.PlaySound("ouch");
-            other.gameObject.GetComponent<Animator>().SetTrigger("ouch");                        
+        if (this.tag != "ShadowTed")
+        {
+            if (isDieing == false && other.gameObject.tag == "Player")
+            {
+                FindObjectOfType<GameManager>().takeDamage(1);
+                soundManager.PlaySound("ouch");
+                other.gameObject.GetComponent<Animator>().SetTrigger("ouch");
+            }
         }
     }
 
