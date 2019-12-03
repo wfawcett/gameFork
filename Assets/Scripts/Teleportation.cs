@@ -10,11 +10,25 @@ public class Teleportation : MonoBehaviour
 
     public void OnTriggerEnter2D(Collider2D other)
     {
+        //Moves player to level 2 scene
         if (other.gameObject.tag == "Player" && Portal.gameObject.tag == "Level1_Door")
         {
             StartCoroutine(Teleport_Level());
         }
 
+        //Moves player to level 3 scene
+        if (other.gameObject.tag == "Player" && Portal.gameObject.tag == "Level2_Door")
+        {
+            StartCoroutine(Teleport_Level());
+        }
+
+        //Moves player to GameOver scene
+        if (other.gameObject.tag == "Player" && Portal.gameObject.tag == "ShadowTed")
+        {
+            StartCoroutine(Teleport_Level());
+        }
+
+        //Teleports the player to the door within the level.
         if (other.gameObject.tag == "Player")
         {
             StartCoroutine(Teleport());

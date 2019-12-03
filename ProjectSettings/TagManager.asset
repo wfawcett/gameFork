@@ -9,6 +9,8 @@ TagManager:
   - LivesText
   - Collectable
   - CoinsText
+  - Level2_Door
+  - ShadowTed
   layers:
   - Default
   - TransparentFX
