@@ -81,6 +81,8 @@ public class GameManager : MonoBehaviour
         
         if (Lives <= 0)
         {
+            print(Lives);
+            print("resetting game");
             Lives = 3;
             Hearts = 3;
             SceneManager.LoadScene("Menu");
