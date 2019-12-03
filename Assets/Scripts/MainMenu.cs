@@ -14,8 +14,9 @@ public class MainMenu : MonoBehaviour
 
     public void RestartGame()
     {
-
-        SceneManager.LoadScene("Menu");
+        GameManager.Lives = 3;
+        GameManager.Hearts = 3;
+        SceneManager.LoadScene("SampleScene");
     }
 
     public void QuitGame()
