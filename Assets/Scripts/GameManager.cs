@@ -30,10 +30,8 @@ public class GameManager : MonoBehaviour
     {
         if (!tedIsInvincible)
         {
-            //print("Ted is Invincible");
             tedIsInvincible = true;
             Hearts -= damage;
-            //print("Hearts: " + Hearts);//replace with hud call
             printHearts();
             Invoke("resetInvolnerability", invincibleTime);
         }
@@ -78,15 +76,11 @@ public class GameManager : MonoBehaviour
 
     private void ResetGame()
     {
-        
         if (Lives <= 0)
         {
-            print(Lives);
-            print("resetting game");
             Lives = 3;
             Hearts = 3;
             SceneManager.LoadScene("Menu");
-           
         }
     }
 
