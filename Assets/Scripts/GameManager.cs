@@ -124,33 +124,3 @@ public class GameManager : MonoBehaviour
         SceneManager.LoadScene(SceneManager.GetActiveScene().name); //SceneManager.GetActiveScene().name returns string name of scene
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//all the garbage code I am too sad to throw away
-
-//Text[] elements = GameObject.FindObjectsOfType<Text>();
-//foreach (var textElement in elements)
-//{
-//    if (textElement.tag.Equals("LivesText"))
-//    {
-//        livesText = textElement;
-//    }
-//}

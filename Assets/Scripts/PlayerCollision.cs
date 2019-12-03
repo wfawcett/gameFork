@@ -11,7 +11,6 @@ public class PlayerCollision : MonoBehaviour
         if(collisionInfo.collider.tag == "Obstacle")
         {
             movement.enabled = false;
-            print("I was called");
             FindObjectOfType<GameManager>().LoseSingleLife();
         }
     }
