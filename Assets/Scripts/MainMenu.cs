@@ -16,7 +16,7 @@ public class MainMenu : MonoBehaviour
     {
         GameManager.Lives = 3;
         GameManager.Hearts = 3;
-        SceneManager.LoadScene("SampleScene");
+        SceneManager.LoadScene("Level1");
     }
 
     public void QuitGame()
