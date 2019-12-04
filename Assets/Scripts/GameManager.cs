@@ -30,10 +30,8 @@ public class GameManager : MonoBehaviour
     {
         if (!tedIsInvincible)
         {
-            //print("Ted is Invincible");
             tedIsInvincible = true;
             Hearts -= damage;
-            //print("Hearts: " + Hearts);//replace with hud call
             printHearts();
             Invoke("resetInvolnerability", invincibleTime);
         }
@@ -78,15 +76,11 @@ public class GameManager : MonoBehaviour
 
     private void ResetGame()
     {
-        
         if (Lives <= 0)
         {
-            print(Lives);
-            print("resetting game");
             Lives = 3;
             Hearts = 3;
             SceneManager.LoadScene("Menu");
-           
         }
     }
 
@@ -96,7 +90,7 @@ public class GameManager : MonoBehaviour
         livesText = GameObject.Find("LivesText").GetComponent<Text>();//found by the name of the object
         heartsText = GameObject.Find("HeartsText").GetComponent<Text>();//find the hearts text
         coinsText = GameObject.Find("CoinsText").GetComponent<Text>();//find the hearts text
-        
+        //u2665
         heartCharacter = "\u2665";//thats a heart in unicode
 
         printHearts();        
@@ -124,33 +118,3 @@ public class GameManager : MonoBehaviour
         SceneManager.LoadScene(SceneManager.GetActiveScene().name); //SceneManager.GetActiveScene().name returns string name of scene
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//all the garbage code I am too sad to throw away
-
-//Text[] elements = GameObject.FindObjectsOfType<Text>();
-//foreach (var textElement in elements)
-//{
-//    if (textElement.tag.Equals("LivesText"))
-//    {
-//        livesText = textElement;
-//    }
-//}
