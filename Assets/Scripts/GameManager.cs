@@ -90,7 +90,7 @@ public class GameManager : MonoBehaviour
         livesText = GameObject.Find("LivesText").GetComponent<Text>();//found by the name of the object
         heartsText = GameObject.Find("HeartsText").GetComponent<Text>();//find the hearts text
         coinsText = GameObject.Find("CoinsText").GetComponent<Text>();//find the hearts text
-        
+        //u2665
         heartCharacter = "\u2665";//thats a heart in unicode
 
         printHearts();        
