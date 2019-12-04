@@ -8,21 +8,15 @@ namespace Tests
 {
     public class ExtensionMethodsTests
     {
-        //// A Test behaves as an ordinary method
-        //[Test]
-        //public void CharacterController2DTestsSimplePasses()
-        //{
-        //    // Use the Assert class to test conditions
-        //}
+        [Test]
 
-        //// A UnityTest behaves like a coroutine in Play Mode. In Edit Mode you can use
-        //// `yield return null;` to skip a frame.
-        //[UnityTest]
-        //public IEnumerator CharacterController2DTestsWithEnumeratorPasses()
-        //{
-        //    // Use the Assert class to test conditions.
-        //    // Use yield to skip a frame.
-        //    yield return null;
-        //}
+        public void ExtensionMethods_CreatesNewVector2()
+        {
+            var vector3 = new Vector3(2f, 3f);
+            var vector2 = vector3.toVector2();
+
+            Assert.AreEqual(vector2.x, vector3.x);
+            Assert.AreEqual(vector2.y, vector3.y);
+        }
     }
 }
