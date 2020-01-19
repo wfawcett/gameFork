@@ -12,7 +12,7 @@ public class EnemyMovement : MonoBehaviour{
     Transform myTransform;
     float myWidth, myHeight;     
     private Animator anim;
-    private bool isDieing = false;
+    private bool isDying = false;
 
     // Start is called before the first frame update
     void Start()    {
@@ -54,40 +54,34 @@ public class EnemyMovement : MonoBehaviour{
     /// TriggerEnter is used to determine if Ted is stomping the enemy.
     /// </summary>
     /// <param name="other">The other Collider2D involved in this collision.</param>
-    void OnTriggerEnter2D(Collider2D other){
-       if(this.tag != "ShadowTed")
-       { 
-           if(other.tag == "Player"){
-               isDieing = true;
-               anim.SetTrigger("die");
-               other.GetComponent<Rigidbody2D>().AddForce(new Vector2(0f, 2000f)); 
-               other.GetComponent<Animator>().SetTrigger("jump");           
-               soundManager.PlaySound("stomp");          
-               Destroy(this.gameObject, .3f);
-            }
-        }
+    void OnTriggerEnter2D(Collider2D other){    
+        if(shouldStompHappen(this.tag, other.tag)){
+            isDying = true;
+            anim.SetTrigger("die");
+            other.GetComponent<Rigidbody2D>().AddForce(new Vector2(0f, 2000f)); 
+            other.GetComponent<Animator>().SetTrigger("jump");           
+            soundManager.PlaySound("stomp");          
+            Destroy(this.gameObject, .3f);
+        }       
     }
 
     /// <summary>
     /// CollisionEnter is used to determine if the Enemy is Hurting Ted
     /// </summary>
     /// <param name="other">The Collision2D data associated with this collision.</param>
-    void OnCollisionEnter2D(Collision2D other)
-    {
-        if (this.tag != "ShadowTed")
-        {
-            if (isDieing == false && other.gameObject.tag == "Player")
-            {
-                FindObjectOfType<GameManager>().takeDamage(1);
-                soundManager.PlaySound("ouch");
-                other.gameObject.GetComponent<Animator>().SetTrigger("ouch");
-            }
-        }
+    void OnCollisionEnter2D(Collision2D other){
+        if(shouldDamageHappen(this.tag, other.gameObject.tag, isDying)){
+             FindObjectOfType<GameManager>().takeDamage(1);
+            soundManager.PlaySound("ouch");
+            other.gameObject.GetComponent<Animator>().SetTrigger("ouch");
+        }        
     }
 
-   
-    // Update is called once per frame
-    void Update()    {
-        
+    bool shouldDamageHappen(string thisTag, string otherTag, bool isDying ){
+        return (thisTag != "ShadowTed" && isDying == false && otherTag == "Player");
+    }
+
+    bool shouldStompHappen(string thisTag, string otherTag ){
+        return thisTag != "ShadowTed" && otherTag == "Player";
     }
 }
