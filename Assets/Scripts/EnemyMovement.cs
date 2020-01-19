@@ -64,6 +64,7 @@ public class EnemyMovement : MonoBehaviour{
                other.GetComponent<Animator>().SetTrigger("jump");           
                soundManager.PlaySound("stomp");          
                Destroy(this.gameObject, .3f);
+               ScoreScript.scoreValue += 5;
             }
         }
     }
