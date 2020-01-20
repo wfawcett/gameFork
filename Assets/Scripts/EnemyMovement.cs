@@ -38,8 +38,7 @@ public class EnemyMovement : MonoBehaviour{
         Debug.DrawLine(lineCastPos, lineCastPos + Vector2.down);
        
         // if he is blocked he will aways turn, he will turn on an edge if avoidFalling is true
-        if ((!GroundInFrontOfMe && avoidFalling ) || isBlocked)
-        {
+        if (EnemyMovementLogic.shouldTurnHappen(GroundInFrontOfMe, avoidFalling, isBlocked)){
             Vector3 currentRotation = myTransform.eulerAngles;
             currentRotation.y += 180;
             myTransform.eulerAngles = currentRotation;            
@@ -55,7 +54,7 @@ public class EnemyMovement : MonoBehaviour{
     /// </summary>
     /// <param name="other">The other Collider2D involved in this collision.</param>
     void OnTriggerEnter2D(Collider2D other){    
-        if(shouldStompHappen(this.tag, other.tag)){
+        if(EnemyMovementLogic.shouldStompHappen(this.tag, other.tag)){
             isDying = true;
             anim.SetTrigger("die");
             other.GetComponent<Rigidbody2D>().AddForce(new Vector2(0f, 2000f)); 
@@ -70,18 +69,12 @@ public class EnemyMovement : MonoBehaviour{
     /// </summary>
     /// <param name="other">The Collision2D data associated with this collision.</param>
     void OnCollisionEnter2D(Collision2D other){
-        if(shouldDamageHappen(this.tag, other.gameObject.tag, isDying)){
+        if(EnemyMovementLogic.shouldDamageHappen(this.tag, other.gameObject.tag, isDying)){
              FindObjectOfType<GameManager>().takeDamage(1);
             soundManager.PlaySound("ouch");
             other.gameObject.GetComponent<Animator>().SetTrigger("ouch");
         }        
     }
 
-    bool shouldDamageHappen(string thisTag, string otherTag, bool isDying ){
-        return (thisTag != "ShadowTed" && isDying == false && otherTag == "Player");
-    }
-
-    bool shouldStompHappen(string thisTag, string otherTag ){
-        return thisTag != "ShadowTed" && otherTag == "Player";
-    }
+    
 }
