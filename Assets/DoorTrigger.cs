@@ -4,31 +4,21 @@ using UnityEngine;
 
 public class DoorTrigger : MonoBehaviour
 {
-    public DoorOpenScript door;
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    Animator anim;
 
     private void OnTriggerEnter2D(Collider2D other)
     {
+        anim.SetBool("Door", true);
         if (other.gameObject.tag == "Player")
         {
-            door.DoorOpens();
+            anim.SetBool("Door", true);
         }
     }
     private void OnTriggerExit2D(Collider2D other)
     {
         if (other.gameObject.tag == "Player")
         {
-            door.DoorClose();
+            anim.SetBool("Door", false);
         }
     }
 }

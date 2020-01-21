@@ -18,10 +18,10 @@ public class DoorOpenScript : MonoBehaviour
     }
     public void DoorOpens()
     {
-        anim.SetBool("Opens", true);
+        anim.SetBool("Door", true);
     }
     public void DoorClose()
     {
-        anim.SetBool("Opens", false);
+        anim.SetBool("Door", false);
     }
 }
