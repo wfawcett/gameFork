@@ -14,7 +14,7 @@ public class PlayerMovement : MonoBehaviour
 
     bool jump = false;
 
-    public Rigidbody2D Ted; 
+    public static Rigidbody2D Ted; 
     
     private Animator anim;
 

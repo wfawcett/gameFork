@@ -11,6 +11,8 @@ TagManager:
   - CoinsText
   - Level2_Door
   - ShadowTed
+  - Ground
+  - ScoreText
   layers:
   - Default
   - TransparentFX
