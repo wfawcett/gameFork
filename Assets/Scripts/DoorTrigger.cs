@@ -4,17 +4,18 @@ using UnityEngine;
 
 public class DoorTrigger : MonoBehaviour
 {
-    Animator anim;
+    public Animator anim;
+    public GameObject Player;
 
-    private void OnTriggerEnter2D(Collider2D other)
+    public void OnTriggerEnter2D(Collider2D other)
     {
-        anim.SetBool("Door", true);
+        //Moves player to level 2 scene
         if (other.gameObject.tag == "Player")
         {
             anim.SetBool("Door", true);
         }
     }
-    private void OnTriggerExit2D(Collider2D other)
+        public void OnTriggerExit2D(Collider2D other)
     {
         if (other.gameObject.tag == "Player")
         {
