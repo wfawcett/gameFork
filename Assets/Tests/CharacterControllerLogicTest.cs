@@ -63,6 +63,36 @@ namespace Tests
         }
         #endregion
 
-       
-    }
+       #region shouldFlip
+
+       [Test]
+      public void shouldFlipWhenPositiveNumAndNotFacingRight(){
+        float move = 1;
+        bool facingRight = false;
+        bool shouldFlip = CharacterControllerLogic.shouldFlip(move, facingRight);
+        Assert.AreEqual(shouldFlip, true);
+      }
+      [Test]
+      public void shouldNotFlipWhenPositiveNumAndFacingRight(){
+        float move = 1;
+        bool facingRight = true;
+        bool shouldFlip = CharacterControllerLogic.shouldFlip(move, facingRight);
+        Assert.AreEqual(shouldFlip, false);
+      }
+      [Test]
+      public void shouldFlipWhenNegativeNumAndFacingRight(){
+        float move = -1;
+        bool facingRight = true;
+        bool shouldFlip = CharacterControllerLogic.shouldFlip(move, facingRight);
+        Assert.AreEqual(shouldFlip, true);
+      }
+      [Test]
+      public void shouldNotFlipWhenNegativeNumAndNotFacingRight(){
+        float move = -1;
+        bool facingRight = false;
+        bool shouldFlip = CharacterControllerLogic.shouldFlip(move, facingRight);
+        Assert.AreEqual(shouldFlip, false);
+      }
+       #endregion
+    } 
 }

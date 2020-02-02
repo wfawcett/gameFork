@@ -31,4 +31,13 @@ public static class CharacterControllerLogic
         return crouch;
     }
 
+     // If the input is moving the player right and the player is facing left...
+    // Otherwise if the input is moving the player left and the player is facing right...
+    public static bool shouldFlip(float move, bool facingRight){
+        bool flip = false;
+        if((move > 0 && !facingRight) || (move < 0 && facingRight)){
+            flip = true;
+        }
+        return flip;
+    }
 }

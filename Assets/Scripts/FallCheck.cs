@@ -17,10 +17,7 @@ public class FallCheck : MonoBehaviour
     }
     void OnTriggerEnter2D(Collider2D col)
     {
-        if (col.gameObject.tag.Equals("Ground"))
-            Debug.Log(PlayerMovement.Ted.velocity.y);
-        if(col.gameObject.tag.Equals("Ground") && PlayerMovement.Ted.velocity.y < -26)
-        {
+        if(FallCheckLogic.farFall(col.gameObject.tag, PlayerMovement.Ted.velocity.y)){
             FindObjectOfType<GameManager>().takeDamage(1);
             soundManager.PlaySound("ouch");
         }
