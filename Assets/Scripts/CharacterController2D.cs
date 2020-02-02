@@ -44,11 +44,13 @@ public class CharacterController2D : MonoBehaviour
 
     private void FixedUpdate()
     {
-        Collider2D[] colliders = Physics2D.OverlapCircleAll(m_GroundCheck.position, k_GroundedRadius, m_WhatIsGround);
-        if (CharacterControllerLogic.shouldLandEvent(colliders))
-        {
-            Debug.log("landed");
+		// The player is grounded if a circlecast to the groundcheck position hits anything designated as ground
+		// This can be done using layers instead but Sample Assets will not overwrite your project settings.
+		Collider2D[] colliders = Physics2D.OverlapCircleAll(m_GroundCheck.position, k_GroundedRadius, m_WhatIsGround);
+        var cNames = colliders.Select( col =>  col.gameObject.name ).ToArray();
+        if(CharacterControllerLogic.shouldLandEvent(cNames, m_Grounded, gameObject.name)){
             OnLandEvent.Invoke();
+            m_Grounded = true;
         }
     }
 
@@ -56,15 +58,7 @@ public class CharacterController2D : MonoBehaviour
     public void Move(float move, bool crouch, bool jump)
     {
         // If crouching, check to see if the character can stand up
-        if (!crouch)
-        {
-            // If the character has a ceiling preventing them from standing up, keep them crouching
-            if (Physics2D.OverlapCircle(m_CeilingCheck.position, k_CeilingRadius, m_WhatIsGround))
-            {
-                crouch = true;
-            }
-        }
-
+        crouch = CharacterControllerLogic.standCheck(crouch, Physics2D.OverlapCircle(m_CeilingCheck.position, k_CeilingRadius, m_WhatIsGround));        
 
         //only control the player if grounded or airControl is turned on
         if (m_Grounded || m_AirControl)
