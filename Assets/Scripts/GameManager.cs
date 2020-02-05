@@ -25,6 +25,7 @@ public class GameManager : MonoBehaviour
     private string heartCharacter;
 
     public static int coins = 0;
+    public static int coinsLevel1 = 0;
 
     public void takeDamage(int damage)//decreaseHearts
     {
@@ -116,5 +117,15 @@ public class GameManager : MonoBehaviour
         //Uncheck auto lighting when we have lighting in order for the restart to not look wierd. Refer Brackeys "Game Over" video 9:43
         //SceneManager.LoadScene("SampleScene"); //This is how we change to different scenes
         SceneManager.LoadScene(SceneManager.GetActiveScene().name); //SceneManager.GetActiveScene().name returns string name of scene
+        if (SceneManager.GetActiveScene().name == "Level1")
+        {
+            coins = 0;
+            ScoreScript.scoreValue = 0;
+        }
+        else if (SceneManager.GetActiveScene().name == "Level2")
+        {
+            coins = GameManager.coinsLevel1;
+            ScoreScript.scoreValue = ScoreScript.scoreValueLevel1;
+        }
     }
 }

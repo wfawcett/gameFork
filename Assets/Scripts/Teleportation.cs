@@ -46,5 +46,7 @@ public class Teleportation : MonoBehaviour
     {
         yield return new WaitForSeconds(1);
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        GameManager.coinsLevel1 = GameManager.coins;
+        ScoreScript.scoreValueLevel1 = ScoreScript.scoreValue;
     }
 }
