@@ -79,7 +79,8 @@ public class EnemyMovement : MonoBehaviour{
 
     public void ShotWithLaser() //can pass player, if needed
     {
-        isDying = true;
+        
+        isDying = true;  
         anim.SetTrigger("die");
         soundManager.PlaySound("stomp");
         Destroy(this.gameObject, .3f);

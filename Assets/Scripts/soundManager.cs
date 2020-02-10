@@ -8,6 +8,7 @@ public class soundManager : MonoBehaviour
     public static AudioClip coinSound;
     public static AudioClip ouchSound;
     public static AudioClip stompSound;
+    public static AudioClip laserSound;
     public static float jumpVolume = .25f;
     static AudioSource audioSrc;
     // Start is called before the first frame update
@@ -17,6 +18,7 @@ public class soundManager : MonoBehaviour
         coinSound = Resources.Load<AudioClip>("Find_Money");
         ouchSound = Resources.Load<AudioClip>("Hero_Hurt");
         stompSound = Resources.Load<AudioClip>("Enemy_Damage");
+        laserSound = Resources.Load<AudioClip>("laserBeame");
         audioSrc = GetComponent<AudioSource>();
     }
 
@@ -40,6 +42,9 @@ public class soundManager : MonoBehaviour
                 break;
             case "stomp":
                 audioSrc.PlayOneShot(stompSound);
+                break;
+            case "laser":
+                audioSrc.PlayOneShot(laserSound);
                 break;
         }
     }
