@@ -40,6 +40,8 @@ public class PlayerMovement : MonoBehaviour
             jump = true;
             anim.SetTrigger("jump");
         }
+
+
     }
 
     void FixedUpdate() {

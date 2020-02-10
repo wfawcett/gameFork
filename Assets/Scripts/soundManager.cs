@@ -18,7 +18,7 @@ public class soundManager : MonoBehaviour
         coinSound = Resources.Load<AudioClip>("Find_Money");
         ouchSound = Resources.Load<AudioClip>("Hero_Hurt");
         stompSound = Resources.Load<AudioClip>("Enemy_Damage");
-        laserSound = Resources.Load<AudioClip>("laserBeame");
+        laserSound = Resources.Load<AudioClip>("laserBeam");
         audioSrc = GetComponent<AudioSource>();
     }
 

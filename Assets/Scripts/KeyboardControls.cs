@@ -30,5 +30,6 @@ public class KeyboardControls : MonoBehaviour
         {
             Ted.AddForce(new Vector2(0, 10), ForceMode2D.Impulse);
         }
+
     }
 }

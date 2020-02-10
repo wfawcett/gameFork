@@ -13,6 +13,8 @@ public class Weapon : MonoBehaviour
         if (Input.GetButtonDown("Fire1"))
         {
             StartCoroutine(Shoot());
+                soundManager.PlaySound("laser");
+            print("laser");
         }
     }
 
