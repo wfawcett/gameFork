@@ -40,7 +40,7 @@ public class Weapon : MonoBehaviour
                                 */        
         //RaycastHit2D hitInfo = Physics2D.BoxCast(FirePoint.position, Vector2.one, 0f, FirePoint.right);
         RaycastHit2D hitInfo = Physics2D.Raycast(FirePoint.position, FirePoint.right, Mathf.Infinity, layerMask); //Parameters: Where to start the ray, the direction, how long the ray should be, layer bitmask
-        var FirePointPosition = FirePoint.position + Vector3.up * 0.65f;
+        var FirePointPosition = FirePoint.position + Vector3.up * 0.60f;
         if (hitInfo) //if we hit something
         {
             EnemyMovement enemy = hitInfo.transform.GetComponent<EnemyMovement>();
