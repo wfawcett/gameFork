@@ -38,15 +38,19 @@ public class Teleportation : MonoBehaviour
 
     private IEnumerator Teleport()
     {
+        
         yield return new WaitForSeconds(1);
         Player.transform.position = new Vector2(Portal.transform.position.x, Portal.transform.position.y);
+        
     }
 
     private IEnumerator Teleport_Level()
     {
+        
         yield return new WaitForSeconds(1);
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
         GameManager.coinsLevel1 = GameManager.coins;
         ScoreScript.scoreValueLevel1 = ScoreScript.scoreValue;
+        
     }
 }

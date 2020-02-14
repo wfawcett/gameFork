@@ -14,7 +14,7 @@ public class Weapon : MonoBehaviour
         {
             StartCoroutine(Shoot());
                 soundManager.PlaySound("laser");
-            print("laser");
+            
         }
     }
 
