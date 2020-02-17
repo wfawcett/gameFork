@@ -40,6 +40,7 @@ public class PlayerMovement : MonoBehaviour
             jump = true;
             anim.SetTrigger("jump");
         }
+
         if (Input.GetButtonDown("Fire1"))
         {
             anim.SetTrigger("fire");

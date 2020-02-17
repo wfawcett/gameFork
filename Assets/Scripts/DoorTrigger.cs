@@ -12,6 +12,7 @@ public class DoorTrigger : MonoBehaviour
         //Moves player to level 2 scene
         if (other.gameObject.tag == "Player")
         {
+            soundManager.PlaySound("doorOpen");
             anim.SetBool("Door", true);
         }
     }
@@ -19,6 +20,7 @@ public class DoorTrigger : MonoBehaviour
     {
         if (other.gameObject.tag == "Player")
         {
+            soundManager.PlaySound("doorOpen");
             anim.SetBool("Door", false);
         }
     }
