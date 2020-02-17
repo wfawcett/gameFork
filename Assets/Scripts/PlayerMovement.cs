@@ -41,7 +41,10 @@ public class PlayerMovement : MonoBehaviour
             anim.SetTrigger("jump");
         }
 
-
+        if (Input.GetButtonDown("Fire1"))
+        {
+            anim.SetTrigger("fire");
+        }
     }
 
     void FixedUpdate() {
