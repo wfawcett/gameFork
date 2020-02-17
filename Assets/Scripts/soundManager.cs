@@ -10,7 +10,8 @@ public class soundManager : MonoBehaviour
     public static AudioClip stompSound;
     public static AudioClip laserSound;
     public static AudioClip doorOpenSound;
-    public static float jumpVolume = .25f;
+    public static float jumpVolume = .1f;
+    public static float laserVolume = .5f;
     static AudioSource audioSrc;
     // Start is called before the first frame update
     void Start()
@@ -46,7 +47,7 @@ public class soundManager : MonoBehaviour
                 audioSrc.PlayOneShot(stompSound);
                 break;
             case "laser":
-                audioSrc.PlayOneShot(laserSound);
+                audioSrc.PlayOneShot(laserSound,laserVolume);
                 break;
             case "doorOpen":
                 audioSrc.PlayOneShot(doorOpenSound);
