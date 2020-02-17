@@ -20,6 +20,7 @@ public class Weapon : MonoBehaviour
 
     IEnumerator Shoot()
     {
+        yield return new WaitForSeconds(0.5f);
         int layerMask = 10240; //Raycast only hits layer 10+. Value is a bitmask.
                                /*
                                 * To select layers that the laser will hit:
@@ -38,10 +39,10 @@ public class Weapon : MonoBehaviour
                                 *      -1 - 2^2 - 2^3 = -1 - 4 - 8 = -13 
                                 *      -13 is our bit mask.
                                 * Scary, but it works.
-                                */
-
+                                */        
+        //RaycastHit2D hitInfo = Physics2D.BoxCast(FirePoint.position, Vector2.one, 0f, FirePoint.right);
         RaycastHit2D hitInfo = Physics2D.Raycast(FirePoint.position, FirePoint.right, Mathf.Infinity, layerMask); //Parameters: Where to start the ray, the direction, how long the ray should be, layer bitmask
-
+        var FirePointPosition = FirePoint.position + Vector3.up * 0.60f;
         if (hitInfo) //if we hit something
         {
             EnemyMovement enemy = hitInfo.transform.GetComponent<EnemyMovement>();
@@ -53,14 +54,15 @@ public class Weapon : MonoBehaviour
             }
 
             //Shoot line to hit object
-            lineRenderer.SetPosition(0, FirePoint.position);
+            
+            lineRenderer.SetPosition(0, FirePointPosition);
             lineRenderer.SetPosition(1, hitInfo.point);
         }
         else
         {
             print("miss");
-            lineRenderer.SetPosition(0, FirePoint.position);
-            lineRenderer.SetPosition(1, FirePoint.position + FirePoint.right * 100);
+            lineRenderer.SetPosition(0, FirePointPosition);
+            lineRenderer.SetPosition(1, FirePointPosition + FirePoint.right * 100);
         }
 
         lineRenderer.enabled = true;
