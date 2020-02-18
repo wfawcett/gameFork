@@ -46,7 +46,7 @@ public class Weapon : MonoBehaviour
         if (hitInfo) //if we hit something
         {
             EnemyMovement enemy = hitInfo.transform.GetComponent<EnemyMovement>();
-            print("hit: " + enemy.transform.name);
+            //print("hit: " + enemy.transform.name);
 
             if (enemy != null) //If we hit an enemy
             {
@@ -60,7 +60,7 @@ public class Weapon : MonoBehaviour
         }
         else
         {
-            print("miss");
+            //print("miss");
             lineRenderer.SetPosition(0, FirePointPosition);
             lineRenderer.SetPosition(1, FirePointPosition + FirePoint.right * 100);
         }
