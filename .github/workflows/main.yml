@@ -1,4 +1,4 @@
-name: Build project
+name: Run tests
 
 on:
   pull_request: {}
@@ -7,32 +7,7 @@ on:
 env:
   UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
   
-jobs:
-  requestManualActivationFile:
-    name: Request manual activation file 🔑
-    runs-on: ubuntu-latest
-    strategy:
-      fail-fast: false
-        
-    steps:
-      # Checkout repository (required to test local actions)
-      - name: Checkout repository
-        uses: actions/checkout@v1
-
-      # Request manual activation file
-      - name: Request manual activation file
-        id: getManualLicenseFile
-        uses: webbertakken/unity-request-manual-activation-file@v1.1
-        with:
-          unityVersion: 2018.4.15f1
-
-      # Upload artifact (Unity_v20XX.X.XXXX.alf)
-      - name: Expose as artifact
-        uses: actions/upload-artifact@v1
-        with:
-          name: ${{ steps.getManualLicenseFile.outputs.filePath }}
-          path: ${{ steps.getManualLicenseFile.outputs.filePath }}
-   
+jobs:    
   testAllModes:
     name: Test in ${{ matrix.testMode }} on version ${{ matrix.unityVersion }}
     runs-on: ubuntu-latest
