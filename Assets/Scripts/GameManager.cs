@@ -45,7 +45,7 @@ public class GameManager : MonoBehaviour
 
     public void AddCoin(){
         coins++;
-        coinsText.text = "Coins: " + coins;
+        coinsText.text = "coins: " + coins;
     }
 
     public void LoseSingleLife()
@@ -58,7 +58,7 @@ public class GameManager : MonoBehaviour
         if (!gameHasEnded)
         {
             Lives--;
-            livesText.text = "Lives: " + Lives;            
+            livesText.text = "lives: " + Lives;            
             anim.SetTrigger("die");
             gameHasEnded = true;
             Invoke("RestartLevel", restartDelay);
